@@ -49,4 +49,21 @@ public class AltBeaconParserSpecificTest {
         assertEquals("major id should be parsed", majorId, 56398);
         assertEquals("minor id should be parsed", minorId, 56415);
     }
+
+    @Test
+    public void testRecognizeIBeacon() {
+        BeaconManager.setDebug(true);
+        byte[] bytes = hexStringToByteArray("0201061BFF4C0002152673DAF8E45E4D85A91D6DF91D9BCD7900010002C66307084C6F632D45780000000000000000000000000000000000000000000000");
+        AltBeaconParser parser = new AltBeaconParser();
+        parser.setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24");
+        Beacon beacon = parser.fromScanData(bytes, -55, null, 123456L);
+        String uuid = beacon.getId1().toUuid().toString().toUpperCase();
+        int majorId = beacon.getId2().toInt();
+        int minorId = beacon.getId3().toInt();
+
+        assertEquals("manData should be parsed", "2673DAF8-E45E-4D85-A91D-6DF91D9BCD79", uuid);
+        //assertEquals("tx power should be parsed", beacon.getTxPower(), -63);
+        assertEquals("major id should be parsed", majorId, 1);
+        assertEquals("minor id should be parsed", minorId, 2);
+    }
 }
