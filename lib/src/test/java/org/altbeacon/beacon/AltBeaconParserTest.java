@@ -46,17 +46,6 @@ public class AltBeaconParserTest {
     }
 
     @Test
-    public void testRecognizeBeacon2() {
-        BeaconManager.setDebug(true);
-        byte[] bytes = hexStringToByteArray("0201061AFF4C000215B9407F30F5F8466EAFF925556B57FE6DDC4EDC5FC1");
-        AltBeaconParser parser = new AltBeaconParser();
-        parser.setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24");
-        Beacon beacon = parser.fromScanData(bytes, -55, null, 123456L);
-        assertEquals ("Beacon should have one data field", 1, beacon.getDataFields().size());
-        assertEquals("manData should be parsed", 9, ((AltBeacon) beacon).getMfgReserved());
-    }
-
-    @Test
     public void testDetectsDaveMHardwareBeacon() {
         org.robolectric.shadows.ShadowLog.stream = System.err;
         byte[] bytes = hexStringToByteArray("02011a1bff1801beac2f234454cf6d4a0fadf2f4911ba9ffa600050003be020e09526164426561636f6e20555342020a0300000000000000000000000000");
