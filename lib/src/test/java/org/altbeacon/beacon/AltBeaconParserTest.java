@@ -1,5 +1,6 @@
 package org.altbeacon.beacon;
 
+import static org.altbeacon.beacon.BeaconParser.URI_BEACON_LAYOUT;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -86,6 +87,6 @@ public class AltBeaconParserTest {
         assertEquals("id3 should be parsed", "2", beacon.getIdentifier(2).toString());
         assertEquals("txPower should be parsed", -59, beacon.getTxPower());
         assertEquals("manufacturer should be parsed", 0x118 ,beacon.getManufacturer());
-        assertEquals("missing data field zero should be zero", new Long(0l), beacon.getDataFields().get(0));
+        assertEquals("missing data field zero should be zero", new Long(0L), beacon.getDataFields().get(0));
     }
 }
