@@ -21,7 +21,7 @@ HOW TO SEE DEBUG LINES FROM YOUR UNIT TESTS:
    file:///Users/dyoung/workspace/AndroidProximityLibrary/build/reports/tests/index.html
 4. Expand the System.err section
  */
-public class AltBeaconParserSensorUpTest {
+public class AltBeaconParserSpecificTest {
 
     public static byte[] hexStringToByteArray(String s) {
         int len = s.length();
